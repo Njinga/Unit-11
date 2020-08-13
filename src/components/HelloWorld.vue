@@ -154,14 +154,30 @@
                             Example on marginal productivity
                         </p>
                         <!--Example 1-->
-                        <p class="green-text">Example (1)</p>
+                        <h3 class="green-text">Example</h3>
+
+                        <!-- Default switch -->
+                        <!-- <div class="custom-control custom-switch">
+        <input type="checkbox"
+               class="custom-control-input"
+               id="answerSwitch"
+               v-model="fxworkingFunctionVisibility.visibility" />
+        <label class="custom-control-label" for="answerSwitch">Answer</label>
+    </div>-->
+                        <mdb-row class="my-4">
+
+                            <mdb-btn @click.native="handleClickNewExample()" color="primary">
+                                NEW EXAMPLE <mdb-icon icon="redo" class="ml-2" />
+                            </mdb-btn>
+                        </mdb-row>
+
                         <p>
                             A certain country's production is described by the function
                         </p>
-                        <div class="text-center" style="margin-bottom:20px;">
+                        <div class="text-center my-4">
                             <span v-katex="'f(x,y)= \\space'"></span><span v-katex="example1Function"></span>
                         </div>
-                        
+
                         units, when <span v-katex="'x'"></span> units of labour and <span v-katex="'y'"></span> units of capital were used
                         <br /><br />
 
@@ -189,14 +205,42 @@
                             and capital are <span v-katex="'x'"></span> and <span v-katex="'y'"></span> units, respectively, is computed from the partial
                             derivative of <span v-katex="'f'"></span> with respect to <span v-katex="' x'"></span>  as
                         </p>
-                        
-                        <div class="text-center" style="margin-bottom:20px;">
-                            <span v-katex="'\\frac{\\partial f}{\\partial x}=f_{x}(x,y)= \\space'"></span><span v-katex="fxFunction"></span>
+
+                        <!-- Default switch -->
+                        <div class="custom-control custom-switch my-4">
+                            <input type="checkbox"
+                                   class="custom-control-input"
+                                   id="fxFunctionSwitch"
+                                   v-model="fxFunctionVisibility.visibility" />
+                            <label class="custom-control-label" for="fxFunctionSwitch">differentiating <span v-katex="'f'"></span> with respect to <span v-katex="' x'"></span> give</label>
                         </div>
+
+                        <div v-show="fxFunctionVisibility.visibility" class="note note-primary mb-4">
+                            
+                            <h4 class="h4-responsive text-danger">Derivative of <span v-katex="'f'"></span> w.r.t <span v-katex="'x'"></span></h4>
+                            <div v-katex:display="fxFunction"></div>
+                            
+                        </div>
+
+
                         <p>
-                            When <span v-katex="'x = 81 '"></span> and <span v-katex="'y = 625'"></span> the required marginal productivity of labour is
+                            When <span v-katex="'x ='"> </span><span v-katex="valueOfy"></span> and <span v-katex="'y = 625'"></span> the required marginal productivity of labour is
                         </p>
-                        <div v-katex:display="'f_x(81, 625) = 400\\left(\\frac{625}{81}\\right)^{\\frac{3}{4}} = 400\\left(\\frac{125}{27}\\right)^{\\frac{3}{4}} =  1851.85'"></div>
+
+                        <!-- Default switch -->
+                        <div class="custom-control custom-switch my-4">
+                            <input type="checkbox"
+                                   class="custom-control-input"
+                                   id="answerSwitch"
+                                   v-model="fxworkingFunctionVisibility.visibility" />
+                            <label class="custom-control-label" for="answerSwitch">Substituting the above values give</label>
+                        </div>
+
+                        <div v-show="fxworkingFunctionVisibility.visibility" class="note note-primary mb-4">
+                            
+                            <h4 class="h4-responsive text-danger">Answer</h4>
+                            <div v-katex:display="fxWorkingFunction"></div>
+                        </div>
                         <p>
                             The marginal productivity of labour is 1851.85 units per unit increase in
                             labour expenditure (with capital expenditure held fixed at 625 units).
@@ -214,13 +258,43 @@
                             and capital are <span v-katex="'x'"></span>  and <span v-katex="'y'"></span>  units, respectively,
                             is computed from the partial derivative of <span v-katex="'f'"></span>  with respect to <span v-katex="'y'"></span>  as
                         </p>
-                        <div class="text-center" style="margin-bottom:20px;">
-                            <span v-katex="'\\frac{\\partial f}{\\partial y}=f_{y}(x,y)= \\space'"></span><span v-katex="fyFunction"></span>
+
+                       
+                        <!-- Default switch -->
+                        <div class="custom-control custom-switch my-4">
+                            <input type="checkbox"
+                                   class="custom-control-input"
+                                   id="fyFunctionSwitch"
+                                   v-model="fyFunctionVisibility.visibility" />
+                            <label class="custom-control-label" for="fyFunctionSwitch">differentiating <span v-katex="'f'"></span> with respect to <span v-katex="' y'"></span> give</label>
                         </div>
+
+                        <div v-show="fyFunctionVisibility.visibility" class="note note-primary mb-4">
+
+                            <h4 class="h4-responsive text-danger">Derivative of <span v-katex="'f'"></span> w.r.t <span v-katex="'y'"></span></h4>
+                            <div v-katex:display="fyFunction"></div>
+
+                        </div>
+
                         <p>
-                            When <span v-katex="'x = 81 '"></span> and <span v-katex="'y = 625'"></span> the required marginal productivity of capital is
+                            When <span v-katex="'x=81'"></span> and <span v-katex="'y = 625'"></span> the required marginal productivity of capital is
                         </p>
-                        <div v-katex:display="'f_y(81, 625) = 1200\\left(\\frac{81}{625}\\right)^{\\frac{1}{4}} = 1200\\left(\\frac{3}{5}\\right)^{\\frac{1}{4}} = 720'"></div>
+
+                        <!-- Default switch -->
+                        <div class="custom-control custom-switch my-4">
+                            <input type="checkbox"
+                                   class="custom-control-input"
+                                   id="fyanswerSwitch"
+                                   v-model="fyworkingFunctionVisibility.visibility" />
+                            <label class="custom-control-label" for="fyanswerSwitch">Substituting the above values give</label>
+                        </div>
+
+                        <div v-show="fyworkingFunctionVisibility.visibility" class="note note-primary mb-4">
+
+                            <h4 class="h4-responsive text-danger">Answer</h4>
+                            <div v-katex:display="fyWorkingFunction"></div>
+                        </div>
+
                         <p>
                             The marginal productivity of capital is 720 units per unit increase in capital expenditure (with labour expenditure held fixed at 81 units).
                         </p>
@@ -231,7 +305,7 @@
                             </p>
                             The results are
                             <p class="ml-5">
-                                Marginal productivity of labour = 1851.85<br />
+                                Marginal productivity of labour = <span v-katex="fxanswer"></span><br />
                                 Marginal productivity of capital = 720
                             </p>
                             The results indicate that a unit increase in labour expenditure results in a
@@ -255,12 +329,12 @@
     import 'katex/dist/katex.min.css';
     import katex from 'katex/dist/katex.mjs'; 
 
-    import nerdamer from 'nerdamer/nerdamer.core.js'
-    import 'nerdamer/Algebra.js'
-    import 'nerdamer/Calculus.js'
-    import 'nerdamer/Solve.js'
+   // import nerdamer from 'nerdamer/nerdamer.core.js'
+    //import 'nerdamer/Algebra.js'
+    //import 'nerdamer/Calculus.js'
+    //import 'nerdamer/Solve.js'
 
-    import { mdbContainer, mdbRow, mdbCol, mdbIcon } from "mdbvue";
+    import { mdbContainer, mdbRow, mdbBtn, mdbCol, mdbIcon } from "mdbvue";
 
 
     export default {
@@ -268,18 +342,28 @@
         components: {
             mdbContainer,
             mdbRow,
+            mdbBtn,
             mdbCol,
             mdbIcon
         },
         data() {
             return {
-                answer: undefined,
-                working: undefined,
+
                 example1Function: undefined,
                 fxFunction: undefined,
                 fyFunction: undefined,
-                answerVisibility: { visibility: false },
-                workingVisibility: { visibility: false }
+                valueOfx: undefined,
+                valueOfy: undefined,
+                fxanswer: undefined,
+                fyanswer: undefined,
+                fxWorkingFunction: undefined,
+                fyWorkingFunction: undefined,
+                fxanswerVisibility: { visibility: false },
+                fyanswerVisibility: { visibility: false },
+                fxworkingFunctionVisibility: { visibility: false },
+                fyworkingFunctionVisibility: { visibility: false },
+                fxFunctionVisibility: { visibility: false },
+                fyFunctionVisibility: { visibility: false }
             }
         },
         beforeMount() {
@@ -288,9 +372,12 @@
             this.example1Function = initilizerVariable[0];
             this.fxFunction = initilizerVariable[1];
             this.fyFunction = initilizerVariable[2];
-            this.answer = this.unconstrainedSolution()[1];
-            this.working = this.unconstrainedSolution()[0]
-
+            this.fxanswer = initilizerVariable[3];
+            this.fyanswer = initilizerVariable[4];
+            this.valueOfx = initilizerVariable[5];
+            this.valueOfy = initilizerVariable[6];
+            this.fxWorkingFunction = initilizerVariable[7];
+            this.fyWorkingFunction = initilizerVariable[8];
         },
         methods: {
             removeAsterix() {
@@ -375,18 +462,22 @@
             generateRandomFunction() {
 
                 let A = this.generateRandomInteger(1500, 2500);
-               // let B = this.generateRandomInteger(70, 85);
-                //let C = this.generateRandomInteger(600, 650);
+                let B = this.generateRandomInteger(70, 85);
+                let C = this.generateRandomInteger(600, 650);
                 let w = Math.random();
                 let k = Math.random();
 
+                var u = A * w * Math.pow(B, w - 1) * Math.pow(C, k);
+                var j = A * Math.pow(B, w) * k* Math.pow(C, k-1);
                 let f = `${A}x^{${w}}y^{${k}}`;
-                let fx = `${A}(${w})x^{${w - 1}}*y^{${k}}`;
-                let fy = `${A}x^{${w}}*(${k})y^{${k-1}}`;
-                let fxAnswer = nerdamer(`diff(${f},x)`);
-                let fyAnswer = nerdamer(`diff(${f},y)`);
-
-                return [f, fx, fy, fxAnswer, fyAnswer];
+                let fx = `\\frac{\\partial f}{\\partial x}=f_{x}(x,y)=${A}(${w})x^{${w - 1}}*y^{${k}}`;
+                let fy = `\\frac{\\partial f}{\\partial y}=f_{y}(x,y)=${A}x^{${w}}*(${k})y^{${k - 1}}`;
+                let fxworking = `f_{x}(${B},${C})=${A}(${w})(${B})^{${w - 1}}*(${C})^{${k}}=${u}`;
+                let fyworking = `f_{y}(${B},${C})=${A}(${B})^{${w}}*(${k})(${C})^{${k - 1}}=${j}`;
+                let fxAnswer = u;
+                let fyAnswer = j;
+                
+                return [f, fx, fy, fxAnswer, fyAnswer, B, C, fxworking, fyworking];
             },
 
             getFunction() {
@@ -406,16 +497,50 @@
                 // let choice = ["Maximum2", "Minimum2", "Opposite"];
                 // let typeNum = choice[Math.floor(Math.random() * choice.length)];//Randomly choosing type 
                 //this.example1Function = this.generateQuadratic2(typeNum);
-                this.example1Function = this.generateRandomFunction();
-                this.answer = this.unconstrainedSolution()[1];
-                this.working = this.unconstrainedSolution()[0];
+                let initilizerVariable = this.generateRandomFunction();
+                //this.example1Function = this.createFunction();
+                this.example1Function = initilizerVariable[0];
+                this.fxFunction = initilizerVariable[1];
+                this.fyFunction = initilizerVariable[2];
+                this.fxanswer = initilizerVariable[3];
+                this.fyanswer = initilizerVariable[4];
+                this.valueOfx = initilizerVariable[5];
+                this.valueOfy = initilizerVariable[6];
+                this.fxWorkingFunction = initilizerVariable[7];
+                this.fyWorkingFunction = initilizerVariable[8];
+
                 this.update_element('answer', this.answer);
                 this.update_element('working', this.working);
                 this.update_element('example1Function', this.example1Function);
                 this.update_element('fxFunction', this.fxFunction);
                 this.update_element('fyFunction', this.fyFunction);
-            }
+                this.update_element('valueOfx', this.valueOfx);
+                this.update_element('valueOfy', this.valueOfy);
+                this.update_element('fxWorkingFunction', this.fxWorkingFunction);
+                this.update_element('fyWorkingFunction', this.fyWorkingFunction);
+                this.update_element('fxanswer', this.fxanswer);
+                this.update_element('fyanswer', this.fyanswer);
+
+            },
+            showfxAnswerDsiplay() {
+                this.fxanswerVisibility.visibility = true;
+            },
+            showfyAnswerDsiplay() {
+                this.fyanswerVisibility.visibility = true;
+            },
+            showfxWorkingFunctionDsiplay() {
+                this.fxworkingFunctionVisibility.visibility = true;
+            },
             
+            showfyWorkingFunctionDsiplay() {
+                this.fyworkingFunctionVisibility.visibility = true;
+            },
+            showfxFunctionDsiplay() {
+                this.fxFunctionVisibility.visibility = true;
+            },
+            showfyFunctionDsiplay() {
+                this.fyFunctionVisibility.visibility = true;
+            }
         }
     }
 </script>
