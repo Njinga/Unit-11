@@ -12,6 +12,7 @@
             </h4>
             <mdb-row class="text-left">
                 <!-- Choose appropriate mdb-col  -->
+               
                 <mdb-col class="text-left w-responsive mx-auto m-3">
                     <p>
                         <ul>
@@ -44,20 +45,16 @@
                             <li>
                                 <strong><em>Use</em></strong> partial derivatives to <strong><em>solve</em></strong> a class of optimization problems with applications in
                                 business and economics. Examples to include
-                            
-                            <ul>
-                                <li>	Minimising costs subject to production quotas.</li>
-                                <li>	Maximising utility subject to budgetary constraints</li>
-                                <li> Maximising production subject to a cost constraint. </li>
-                            </ul>
-                                </li>
+
+                                <ul>
+                                    <li>	Minimising costs subject to production quotas.</li>
+                                    <li>	Maximising utility subject to budgetary constraints</li>
+                                    <li> Maximising production subject to a cost constraint. </li>
+                                </ul>
+                            </li>
                         </ul>
                     </p>
                 </mdb-col>
-
-                <mdb-col class="text-left w-responsive mx-auto m-3">
-
-                </mdb-col>   
             </mdb-row>
         </section>
         <hr />
