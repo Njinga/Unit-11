@@ -224,7 +224,7 @@
 
 
                         <p>
-                            When <span v-katex="'x ='"> </span><span v-katex="valueOfy"></span> and <span v-katex="'y = 625'"></span> the required marginal productivity of labour is
+                            When <span v-katex="'x ='"> </span><span v-katex="valueOfx"></span> and <span v-katex="'y ='"> </span><span v-katex="valueOfy"></span> the required marginal productivity of labour is
                         </p>
 
                         <!-- Default switch -->
@@ -277,7 +277,7 @@
                         </div>
 
                         <p>
-                            When <span v-katex="'x=81'"></span> and <span v-katex="'y = 625'"></span> the required marginal productivity of capital is
+                            When <span v-katex="'x ='"> </span><span v-katex="valueOfx"></span> and <span v-katex="'y ='"> </span><span v-katex="valueOfy"></span> the required marginal productivity of capital is
                         </p>
 
                         <!-- Default switch -->
@@ -306,7 +306,7 @@
                             The results are
                             <p class="ml-5">
                                 Marginal productivity of labour = <span v-katex="fxanswer"></span><br />
-                                Marginal productivity of capital = 720
+                                Marginal productivity of capital = <span v-katex="fyanswer"></span>
                             </p>
                             The results indicate that a unit increase in labour expenditure results in a
                             greater increase in productivity than a unit increase in capital expenditure
@@ -474,10 +474,11 @@
                 let fy = `\\frac{\\partial f}{\\partial y}=f_{y}(x,y)=${A}x^{${w}}*(${k})y^{${k - 1}}`;
                 let fxworking = `f_{x}(${B},${C})=${A}(${w})(${B})^{${w - 1}}*(${C})^{${k}}=${u}`;
                 let fyworking = `f_{y}(${B},${C})=${A}(${B})^{${w}}*(${k})(${C})^{${k - 1}}=${j}`;
-                let fxAnswer = u;
-                let fyAnswer = j;
-                
-                return [f, fx, fy, fxAnswer, fyAnswer, B, C, fxworking, fyworking];
+                let fxAnswer = `${u}`;
+                let fyAnswer = `${j}`;
+                let xv = `${B}`;
+                let yv = `${C}`;
+                return [f, fx, fy, fxAnswer, fyAnswer, xv, yv, fxworking, fyworking];
             },
 
             getFunction() {
